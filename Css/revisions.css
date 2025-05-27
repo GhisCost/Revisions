@@ -1,0 +1,92 @@
+/*  */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(113, 146, 177);
+}
+
+/* Deux solutions pour ciblé le 2eme h2 */
+
+/* 1ere solution */
+main > section > div:last-child > h2 {
+  font-family: cursive;
+}
+/* 2 eme solution */
+#beurk {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+/* les NTH: nth=> N-ieme  */
+
+main > section > div:nth-child(2) {
+  color: crimson;
+}
+
+/* 2 solution si on a un css identique pour plusieurs éléments */
+
+/* 1ere solution: aller chercher chaque élément à la main séparé par un virgule */
+
+main > section > div:first-child > h2,
+main > section > div:first-child > p {
+  color: blueviolet;
+}
+
+/* 2 eme solution: les classes */
+
+.center {
+  text-align: center;
+}
+
+nav {
+  margin: 20px;
+}
+/* Vrai CSS */
+
+nav ul {
+  display: flex; /* Disposé en ligne par défaut (il est possible de la mettre en colone*/
+  list-style: none;
+  justify-content: space-evenly; /*Justify-content aligne les éléments flex horizontalement SEULEMENT si l'alignement est en ligne (et non en colum) sinon il agit verticalement en cas de colonne*/
+  align-items: center; /* Comme justify-content mais verticalement SAUF si l'alignement est en colonne, dans ce cas il agira horizontalement*/
+}
+a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+/* Hover: pseudo-classe qui permet de changer le css lors d'un survol de la souris */
+
+li:hover {
+  transform: scale(1.5);
+}
+
+.liens:hover {
+  color: aquamarine;
+}
+#img-griffon {
+  background-image: url(../Image/308105.HR_.webp);
+  height: 400px;
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center;
+  border-radius: 50% 15% / 50% 15%;
+}
+/* Margin et padding: plusieur çons de faire:
+pour les 4 mêmes (haut, droite, bas, gauche) > margin: 10px;
+pour en haut/bas et gauche/droite > margin: 10px 20px;
+pour cibler chacun > margin : 10px 10px 15px 20px;*/
+
+/* Grid */
+
+/* main > section > div:nth-child(2) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+} */
+
+p , h2 {margin: 10px;}
+
+span { color: red;
+}
