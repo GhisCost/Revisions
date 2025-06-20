@@ -1,0 +1,56 @@
+/* Ici mon CSS mobile */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5px;
+  background-color: rgb(127, 3, 127);
+  color: rgb(255, 255, 255);
+}
+
+#nav-tablette-pc {
+  display: none;
+}
+
+#baniere {
+    background-image: url(/revisions2/assets/img/t57lvn.avif);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 45vh;
+}
+/* Ici mon css tablette (768p min) */
+
+@media (min-width: 768px) {
+  #nav-mobile {
+    display: none;
+  }
+
+  #nav-tablette-pc {
+    display: block;
+    width: 75%;
+  }
+
+  header ul {
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    margin: 0;
+  }
+  header a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+  }
+  header li:not(:last-child) {
+    padding:0 10px;
+}
+header nav a:hover {
+    color: orange
+
+}
+}
+/* Ici mon Css ordinateur */
+
+@media (min-width:1024px) {}
+
