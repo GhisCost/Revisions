@@ -1,0 +1,22 @@
+
+#btnbouge{
+    background-color: blue;
+    color: white;
+    border: none;
+    text-align: center;
+    width: 150px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 150px;
+    position: absolute;
+    top: 50%;
+    left:50%;
+}
+
+#conteneur-btn{
+    position: relative;
+    height: 90vh;
+    width: 100%;
+}
+
+

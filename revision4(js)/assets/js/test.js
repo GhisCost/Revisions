@@ -4,6 +4,8 @@ p.id = "resultat";
 let count = 0;
 let compteur = document.createElement("p");
 
+let reponseJusteCourante = "";
+let btnSuivantCourant = null;
 
 // Fonction qui premet de vérifier la réponse et de retourner un message ainsi que d'afficher le bouton suivant si la réponse est bonne
 
@@ -17,13 +19,16 @@ function reponseQuiz(str, btn, next) {
     });
     count++;
     compteur.textContent = count;
+    console.log(count);
+
     document.querySelector(".quiz-box").appendChild(compteur);
-  } else {
+  } else if(btn.textContent != str) {
     p.textContent = "Mauvaise reponse, t'es débile !";
     p.style.backgroundColor = "black";
     p.style.color = "red";
     count--;
     compteur.textContent = count;
+    console.log(count);
     document.querySelector(".quiz-box").appendChild(compteur);
   }
   document.querySelectorAll(".quiz-box").forEach((quizz) => {
@@ -58,23 +63,35 @@ function questionSuivant(
 
   boutons = document.querySelectorAll(".reponse");
 
-  boutons.forEach((btn2) => {
-    btn2.addEventListener("click", function () {
-       reponseQuiz(reponseJuste, this, btn3);
-    });
-  });
+
+ reponseJusteCourante = reponseJuste;
+  btnSuivantCourant = btn3;
+
 }
+
+boutons.forEach((btn) => {
+  btn.addEventListener("click", function () {
+    if (reponseJusteCourante && btnSuivantCourant) {
+      reponseQuiz(reponseJusteCourante, this, btnSuivantCourant);
+    }
+  });
+});
+
 
 let questionAremplir = document.querySelector("#question");
 
 let suivant1 = document.createElement("button");
 suivant1.classList.add("suivant");
 
-boutons.forEach((btn) => {
-  btn.addEventListener("click", function () {
- reponseQuiz("Paris", this, suivant1);
-  });
-});
+
+reponseJusteCourante = "Paris";
+btnSuivantCourant = suivant1;
+
+questionAremplir.textContent = "Quelle est la capitale de la France ?";
+boutons[0].textContent = "Lyon";
+boutons[1].textContent = "Paris";
+boutons[2].textContent = "Marseille";
+
 
 let suivant2 = document.createElement("button");
 suivant2.classList.add("suivant");
@@ -91,6 +108,9 @@ suivant1.addEventListener("click", function () {
   );
 });
 
+let suivant3 = document.createElement("button");
+suivant3.classList.add("suivant");
+
 suivant2.addEventListener("click", function () {
   questionSuivant(
     "Quelle est la capitale de l'Allemagne ?",
@@ -98,10 +118,18 @@ suivant2.addEventListener("click", function () {
     "Dortmund",
     "Berlin",
     suivant2,
-    "Berlin"
+    "Berlin",
+    suivant3
   );
 });
 
+let resultatjs=document.querySelector('#resultatfinal');
 
 
+suivant3.addEventListener('click', function(){
+  resultatjs.textContent =`Félicitation vous avez fait ${count} points`;
+document.querySelector(".quiz-box").style.opacity="0.5";
+resultatjs.style.opacity='1';
+document.querySelector("#ecranresultat").style.animation= "apparition 2s";
+});
 // document.querySelector(".quiz-box").appendChild(compteur);
